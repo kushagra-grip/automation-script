@@ -14,4 +14,8 @@ cyan='\033[0;36m'
 # Clear the color after that
 clear='\033[0m'
 
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 directory_path=""

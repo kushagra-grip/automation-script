@@ -28,10 +28,19 @@ for i in "${directories[@]}"
 echo -ne "\n"
 
 # --------------------------- INPUT PROCESS END HERE ---------------------------
-
+counter=0
 for i in "${directories[@]}"
     do
-        build_docker_image $i
+        let "counter+=1"
+        build_docker_image $i $counter
     done
+
+helm_install=("helm" "install" "test" "$main_directory/test" "--atomic")
+"${helm_install[@]}" &
+
+PID=$!
+
+progress $PID
+
 
 exit 0
