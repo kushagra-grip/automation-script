@@ -1,6 +1,8 @@
 main_directory="/home/ubuntu/environment/kushagra"
-directories=("gi-external-bridge" "grip-client-backend" "test" "abc-client-web")
 
+# directories=("gi-client-static" "gi-client-web" "gi-external-bridge" "gi-web-bridge" "gi-common-service" "grip-client-backend" "grip-client-web" )
+
+directories=("gi-external-bridge" "grip-client-backend" "test" "abc-client-web")
 
 # Color variables
 red='\033[0;31m'
