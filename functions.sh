@@ -40,4 +40,18 @@ progress() {
             sleep 0.5
         done
     done
+    echo -ne "\n"
+    
+    if [ -s okay.txt ]; then
+        # The file is not-empty.
+        echo "✅  deployment successfull "
+        cat okay.txt
+    else
+        # The file is empty.
+        echo "❌  deployment failed "
+        cat err.txt
+    fi
+    
+    rm -f err.txt
+    rm -f okay.txt
 }

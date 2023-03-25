@@ -36,11 +36,12 @@ for i in "${directories[@]}"
     done
 
 helm_install=("helm" "install" "test" "$main_directory/test" "--atomic")
-"${helm_install[@]}" &
+"${helm_install[@]}" > okay.txt 2> err.txt &
 
 PID=$!
+exit_code=$?
 
-progress $PID
+progress $PID $exit_code
 
 
 exit 0
