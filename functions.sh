@@ -9,7 +9,7 @@ build_docker_image() {
     find_directory $1
     if [ -z "$directory_path" ]
     then
-          echo -e "🔍 ${green}${bold}$1${normal}${clear} ${red}${bold}not found in ${normal}${blue}$main_directory${clear}${clear}"
+          echo -e "🔍 ${blue}$main_directory${clear} ${red}${bold}do not contains ${normal}${green}${bold}$1($2/${#directories[@]})${normal}${clear}${clear}"
           echo -ne "\n"
           return
     fi
@@ -23,7 +23,7 @@ build_docker_image() {
     then
         echo -e "✅ docker image build successfull for ${green}${bold}$1($2/${#directories[@]})${normal}${clear}"
     else
-        echo -e "❌ ${red}${bold}docker image build failed for${normal}${clear} ${green}${bold}$1${normal}${clear}"
+        echo -e "❌ ${red}${bold}docker image build failed for${normal}${clear} ${green}${bold}$1($2/${#directories[@]})${normal}${clear}"
     fi
     
     echo -ne "\n"
@@ -31,12 +31,13 @@ build_docker_image() {
 
 
 progress() {
+    SECONDS=0
     spinner=(⬆️ ↗️ ➡️ ↘️ ⬇️ ↙️ ⬅️ ↖️)
     while [ -d /proc/$1 ]
     do    
         for i in ${spinner[@]}
         do        
-            echo -ne "\r$i Deployment in progress"
+            echo -ne "\r$i Deployment in progress ${SECONDS}s"
             sleep 0.5
         done
     done
